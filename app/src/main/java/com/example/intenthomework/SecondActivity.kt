@@ -140,6 +140,9 @@ fun SecondPage() {
                         emailIntent.data = Uri.parse("mailto:")
                         emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("example@example.com"))
                         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Buy Ticket Concert")
+                        emailIntent.putExtra(Intent.EXTRA_TEXT, "Kategori : (Isi Seat Category) \n" +
+                                "Nama : (Isi Nama Anda) \n" + "No. Hp : (Isi No. Hp Anda) \n" +
+                                "Nomor Keanggotaan : (Isi No. Keanggotaan Anda)")
                         startActivity(context, emailIntent, null)
                     },
                     modifier = Modifier.padding(16.dp)
