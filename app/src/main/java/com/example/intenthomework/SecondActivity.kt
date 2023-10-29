@@ -44,6 +44,9 @@ class SecondActivity : ComponentActivity() {
 fun SecondPage() {
     val context = LocalContext.current
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://maps.app.goo.gl/jKk7ub4w6UdksDcX9"))
+    val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:example@example.com"))
+    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Concert Ticket Inquiry")
+
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -69,6 +72,14 @@ fun SecondPage() {
             modifier = Modifier.padding(16.dp)
         ) {
             Text(text = "Maps")
+        }
+        Button(
+            onClick = {
+                startActivity(context, emailIntent, null)
+            },
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(text = "Buy Ticket")
         }
     }
 }
