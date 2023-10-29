@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,7 +43,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting() {
     val context = LocalContext.current
-    val intent = Intent(context, SecondActivity::class.java)
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -56,18 +56,36 @@ fun Greeting() {
                 .height(200.dp),
             contentScale = ContentScale.FillWidth
         )
-        Text(
-            text = "Concert Name",
-            modifier = Modifier.padding(16.dp),
-            style = TextStyle(fontSize = 18.sp)
-        )
-        Button(
-            onClick = {
-                startActivity(context, intent, null)
-            },
-            modifier = Modifier.padding(16.dp)
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentAlignment = Alignment.BottomStart
+        ){
+            Row {
+                Text(
+                    text = "FLOWERFUL \n" + "JKT48 12th Anniversary Concert",
+                    modifier = Modifier.padding(15.dp),
+                    style = TextStyle(fontSize = 20.sp),
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentAlignment = Alignment.BottomStart
         ) {
-            Text(text = "Detail")
+            Row {
+                Button( //Intent Explicit
+                    onClick = {
+                        val intent = Intent(context, SecondActivity::class.java)
+                        startActivity(context, intent, null)
+                    },
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text(text = "Detail Concert")
+                }
+            }
         }
     }
 }
@@ -76,7 +94,7 @@ fun Greeting() {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    IntentHomeworkTheme {
-        Greeting()
+IntentHomeworkTheme {
+    Greeting()
     }
 }

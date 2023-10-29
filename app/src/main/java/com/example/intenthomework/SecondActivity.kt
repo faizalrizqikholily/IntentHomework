@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,34 +54,99 @@ fun SecondPage() {
             contentDescription = "Concert Banner",
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp),
+                .height(250.dp),
             contentScale = ContentScale.FillWidth
         )
-        Text(
-            text = "Concert Detail",
-            modifier = Modifier.padding(16.dp),
-            style = TextStyle(fontSize = 18.sp)
-        )
-        Button(
-            onClick = {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://maps.app.goo.gl/jKk7ub4w6UdksDcX9"))
-                startActivity(context, intent, null)
-            },
-            modifier = Modifier.padding(16.dp)
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentAlignment = Alignment.BottomStart
         ) {
-            Text(text = "Maps")
+            Row {
+                Text(
+                    text = "Concert Detail",
+                    modifier = Modifier.padding(16.dp),
+                    style = TextStyle(fontSize = 20.sp),
+                    fontWeight = FontWeight.Bold
+                )
+            }
         }
-        Button(
-            onClick = {
-                val emailIntent = Intent(Intent.ACTION_SENDTO)
-                emailIntent.data = Uri.parse("mailto:")
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("example@example.com"))
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Buy Ticket Concert")
-                startActivity(context, emailIntent, null)
-            },
-            modifier = Modifier.padding(16.dp)
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentAlignment = Alignment.BottomStart
         ) {
-            Text(text = "Buy Ticket")
+            Row {
+                Text(
+                    text = "Lokasi : Graha Unesa Surabaya \n" + "Tanggal : 17 Desember 2023 \n" + "Open Gate : 17.00 WIB",
+                    modifier = Modifier.padding(16.dp),
+                    style = TextStyle(fontSize = 14.sp),
+                )
+            }
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentAlignment = Alignment.BottomStart
+        ) {
+            Row {
+                Text(
+                    text = "Harga Tiket",
+                    modifier = Modifier.padding(16.dp),
+                    style = TextStyle(fontSize = 16.sp),
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentAlignment = Alignment.BottomStart
+        ) {
+            Row {
+                Text(
+                    text = "Kategori ROSE : Rp. 1.300.000\n" +
+                            "Kategori ORCHID : Rp. 750.000\n" +
+                            "Kategori TULIP : Rp. 600.000\n" +
+                            "Kategori JASMINE FLOOR : Rp. 350.000\n" +
+                            "Kategori JASMINE TRIBUNE : Rp. 350.000\n" +
+                            "Online : Akan diumumkan lebih lanjut \n",
+                    modifier = Modifier.padding(16.dp),
+                    style = TextStyle(fontSize = 14.sp),
+                )
+            }
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(),
+            contentAlignment = Alignment.BottomStart
+        ) {
+            Row {
+                Button( //Intent implicit
+                    onClick = {
+                        val intent = Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://maps.app.goo.gl/jKk7ub4w6UdksDcX9")
+                        )
+                        startActivity(context, intent, null)
+                    },
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text(text = "Maps")
+                }
+                Button( //Intent implicit and intent filter
+                    onClick = {
+                        val emailIntent = Intent(Intent.ACTION_SENDTO)
+                        emailIntent.data = Uri.parse("mailto:")
+                        emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("example@example.com"))
+                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Buy Ticket Concert")
+                        startActivity(context, emailIntent, null)
+                    },
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text(text = "Buy Ticket")
+                }
+            }
         }
     }
 }
