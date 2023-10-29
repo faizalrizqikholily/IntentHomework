@@ -43,14 +43,14 @@ class SecondActivity : ComponentActivity() {
 @Composable
 fun SecondPage() {
     val context = LocalContext.current
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://maps.app.goo.gl/jKk7ub4w6UdksDcX9n"))
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://maps.app.goo.gl/jKk7ub4w6UdksDcX9"))
 
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.drawable.banner),
+            painter = painterResource(id = R.drawable.banner2),
             contentDescription = "Concert Banner",
             modifier = Modifier
                 .fillMaxWidth()
@@ -70,15 +70,5 @@ fun SecondPage() {
         ) {
             Text(text = "Maps")
         }
-        //Button(
-        // onClick = {
-        // Handle buy ticket logic here
-        // },
-        // modifier = Modifier
-        //    .padding(16.dp)
-        //    .align(Alignment.End)
-        // ) {
-        //  Text(text = "Buy Ticket")
-        //  }
     }
 }

@@ -49,7 +49,7 @@ fun Greeting() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.drawable.banner),
+            painter = painterResource(id = R.drawable.banner1),
             contentDescription = "Concert Banner",
             modifier = Modifier
                 .fillMaxWidth()
